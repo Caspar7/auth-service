@@ -29,7 +29,7 @@ public class AuthController {
         String jwtToken = jwtService.createJWT("1982","caspar");
 
         //将鉴权token放到redis 过期时间5分钟
-        redisTemplate.opsForValue().set(jwtToken, jwtToken,TimeUnit.MINUTES.toMinutes(5));
+        redisTemplate.opsForValue().set(jwtToken, jwtToken,5,TimeUnit.MINUTES);
         return jwtService.createJWT("1982","caspar");
     }
 }

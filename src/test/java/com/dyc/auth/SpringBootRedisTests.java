@@ -25,6 +25,8 @@ public class SpringBootRedisTests {
     //直接使用redisTemplate存取字符串
     public void setAndGet() {
         redisTemplate.opsForValue().set("test:set", "testValue1");
+        String s = (String)redisTemplate.opsForValue().get("test:set");
+        System.out.print("s="+s);
         Assert.assertEquals("testValue1", redisTemplate.opsForValue().get("test:set"));
     }
 
@@ -43,8 +45,8 @@ public class SpringBootRedisTests {
     //使用Redis缓存对象，getUser只会被调用一次
     public void testCache() {
         User user;
-        user = userService.getUser("Ttomm");
-        user = userService.getUser("Ttomm");
-        user = userService.getUser("Ttomm");
+        user = userService.getUser("dyc");
+        user = userService.getUser("dyc");
+        user = userService.getUser("dyc");
     }
 }
